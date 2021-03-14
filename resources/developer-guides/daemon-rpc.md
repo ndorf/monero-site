@@ -745,27 +745,27 @@ Inputs: *None*.
 
 Outputs:
 
-* *adjusted_time* - TODO
+* *adjusted_time* - unsigned int; Current time approximated from chain data, as Unix time.
 * *alt_blocks_count* - unsigned int; Number of alternative blocks to main chain.
-* *block_size_limit* - unsigned int; Maximum allowed block size
-* *block_size_median* - unsigned int; Median block size of latest 100 blocks
-* *block_weight_limit* - TODO
-* *block_weight_median* - TODO
+* *block_size_limit* - unsigned int; Backward compatibility, same as *block_weight_limit*, use that instead
+* *block_size_median* - unsigned int; Backward compatibility, same as *block_weight_median*, use that instead
+* *block_weight_limit* - unsigned int; Maximum allowed adjusted block size based on latest 100000 blocks
+* *block_weight_median* - unsigned int; Median adjusted block size of latest 100000 blocks
 * *bootstrap_daemon_address* - string; @Bootstrap-node to give immediate usability to wallets while syncing by proxying RPC to it. (Note: the replies may be untrustworthy).
 * *busy_syncing* - boolean; States if new blocks are being added (`true`) or not (`false`).
-* *credits* - TODO
-* *cumulative_difficulty* - unsigned int; Cumulative difficulty of all blocks in the blockchain.
-* *cumulative_difficulty_top64* - TODO
-* *database_size* - TODO
-* *difficulty* - unsigned int; Network difficulty (analogous to the strength of the network)
-* *difficulty_top64* - TODO
+* *credits* - unsigned int; If payment for RPC is enabled, the number of credits available to the requesting client. Otherwise, 0.
+* *cumulative_difficulty* - unsigned int; Least-significant 64 bits of the 128-bit cumulative difficulty.
+* *cumulative_difficulty_top64* - unsigned int; Most-significant 64 bits of the 128-bit cumulative difficulty.
+* *database_size* - unsigned int; The size of the blockchain database, in bytes.
+* *difficulty* - unsigned int; Least-significant 64 bits of the 128-bit network difficulty.
+* *difficulty_top64* - unsigned int; Most-significant 64 bits of the 128-bit network difficulty.
 * *free_space* - unsigned int; Available disk space on the node.
 * *grey_peerlist_size* - unsigned int; Grey Peerlist Size
 * *height* - unsigned int; Current length of longest chain known to daemon.
 * *height_without_bootstrap* - unsigned int; Current length of the local chain of the daemon.
 * *incoming_connections_count* - unsigned int; Number of peers connected to and pulling from your node.
 * *mainnet* - boolean; States if the node is on the mainnet (`true`) or not (`false`).
-* *nettype* - TODO
+* *nettype* - string; Network type (one of `mainnet`, `stagenet` or `testnet`).
 * *offline* - boolean; States if the node is offline (`true`) or online (`false`).
 * *outgoing_connections_count* - unsigned int; Number of peers that you are connected to and getting information from.
 * *rpc_connections_count* - unsigned int; Number of RPC client connected to the daemon (Including this RPC request).
@@ -777,16 +777,16 @@ Outputs:
 * *target_height* - unsigned int; The height of the next block in the chain.
 * *testnet* - boolean; States if the node is on the testnet (`true`) or not (`false`).
 * *top_block_hash* - string; Hash of the highest block in the chain.
-* *top_hash* - TODO
+* *top_hash* - string; If payment for RPC is enabled, the hash of the highest block in the chain. Otherwise, empty.
 * *tx_count* - unsigned int; Total number of non-coinbase transaction in the chain.
 * *tx_pool_size* - unsigned int; Number of transactions that have been broadcast but not included in a block.
 * *untrusted* - boolean; States if the result is obtained using the bootstrap mode, and is therefore not trusted (`true`), or when the daemon is fully synced and thus handles the RPC locally (`false`)
-* *update_available* - TODO
-* *version* - TODO
+* *update_available* - boolean; States if a newer Monero software version is available.
+* *version* - string; The version of the Monero software the node is running.
 * *was_bootstrap_ever_used* - boolean; States if a bootstrap node has ever been used since the daemon started.
 * *white_peerlist_size* - unsigned int; White Peerlist Size
-* *wide_cumulative_difficulty* - TODO
-* *wide_difficulty* - TODO
+* *wide_cumulative_difficulty* - Cumulative difficulty of all blocks in the blockchain as a hexadecimal string representing a 128-bit number.
+* *wide_difficulty* - string; Network difficulty (analogous to the strength of the network) as a hexadecimal string representing a 128-bit number.
 
 Following is an example `get_info` call and its return:
 
